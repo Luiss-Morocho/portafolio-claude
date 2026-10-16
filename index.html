@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis Morocho · Estudiante de Ingeniería en Ciencias de la Computación</title>
+<meta name="description" content="Portafolio de Luis Ángel Morocho Salazar: desarrollo full stack, docencia en informática inclusiva y análisis de datos. Quito, Ecuador.">
+<style>
+:root{
+  --navy:#0f2a6b; --navy-dk:#0a1d4d; --ink:#1d2433; --muted:#566074; --line:#d9deea;
+  --bg:#fff; --soft:#f4f6fb; --wa:#128c4a;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font:1rem/1.65 var(--sans);color:var(--ink);background:var(--bg);overflow-x:hidden}
+img{max-width:100%}
+a{color:var(--navy)}
+a:focus-visible,button:focus-visible{outline:3px solid #f2a900;outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+.skip{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:.6rem 1rem;z-index:100}
+.skip:focus{left:0}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:.6rem 1.25rem;border-radius:6px;border:2px solid var(--navy);background:var(--navy);color:#fff;font:600 1rem var(--sans);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--navy-dk)}
+.btn.sec{background:#fff;color:var(--navy)}
+.btn.sec:hover{background:var(--soft)}
+
+/* Menú */
+header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.brand{font:700 1.15rem var(--serif);color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:.55rem .8rem;color:var(--ink);text-decoration:none;border-radius:6px;font-size:.95rem}
+nav a:hover{background:var(--soft)}
+nav a.cta{background:var(--navy);color:#fff}
+.burger{display:none;min-width:46px;min-height:46px;border:1px solid var(--line);background:#fff;border-radius:6px;font-size:1.4rem;cursor:pointer}
+
+/* Inicio */
+.hero{padding:3.5rem 0 3rem}
+.hero .wrap{display:grid;grid-template-columns:1fr 200px;gap:2.5rem;align-items:center}
+.hero h1{font:400 clamp(2.1rem,6vw,3.6rem)/1.05 var(--serif);margin:0 0 .4rem;color:var(--muted)}
+.hero h1 strong{color:var(--ink)}
+.role{font:600 1.15rem var(--serif);color:var(--navy);margin:0 0 1rem}
+.hero p.lead{max-width:60ch;margin:0 0 1.5rem}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.photo{width:200px;height:231px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line)}
+.place{margin:1.25rem 0 0;color:var(--muted);font-size:.9rem}
+
+/* Secciones */
+section{padding:3.25rem 0;border-top:1px solid var(--line)}
+section.alt{background:var(--soft)}
+h2{font:700 1.8rem var(--serif);color:var(--ink);margin:0 0 1.5rem}
+h3{font:700 1.1rem var(--serif);color:var(--navy);margin:0}
+p{margin:0 0 1rem}
+.about{max-width:68ch}
+
+/* Línea de tiempo (punteada, como en el CV) */
+.tl{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:3px dotted #a9b3c9}
+.tl li{margin-bottom:2rem;break-inside:avoid}
+.tl li:last-child{margin-bottom:0}
+.date{font:700 .9rem var(--serif);color:var(--muted);margin:0}
+.org{margin:0 0 .5rem;color:var(--muted);font-weight:600}
+.tl ul{margin:0;padding-left:1.1rem}
+.tl ul li{margin:0 0 .3rem;padding:0}
+
+/* Cursos */
+.courses{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
+.courses h3{font-size:1rem}
+.courses div{border:1px solid var(--line);background:#fff;border-radius:6px;padding:.9rem 1rem;break-inside:avoid}
+.courses p{margin:.15rem 0 0;font-size:.9rem;color:var(--muted)}
+h2+.sub,.sub{font:700 1.3rem var(--serif);margin:2.5rem 0 1rem}
+
+/* Habilidades */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.tags{list-style:none;margin:0 0 1.5rem;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.tags li{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.2rem .8rem;font-size:.92rem}
+h3.g{margin:0 0 .6rem;font-size:1rem;color:var(--muted);font-family:var(--sans)}
+
+/* Contacto */
+.contact-list{list-style:none;margin:0 0 1.5rem;padding:0;display:grid;gap:.6rem}
+.contact-list a{font-weight:600}
+.print-contact{display:none}
+
+footer{padding:1.5rem 0 6rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+
+/* WhatsApp flotante */
+.wa{position:fixed;right:1rem;bottom:1rem;z-index:60;display:flex;align-items:center;gap:.5rem;min-height:52px;padding:.7rem 1.1rem;border-radius:999px;background:var(--wa);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.wa:hover{background:#0d6e3a}
+.wa svg{width:26px;height:26px;fill:#fff;flex:none}
+
+@media (max-width:760px){
+  .burger{display:block}
+  nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1rem}
+  nav.open{display:block}
+  nav ul{flex-direction:column}
+  nav a{padding:.8rem}
+  .hero .wrap{grid-template-columns:1fr}
+  .photo{order:-1;width:130px;height:150px}
+  .skills,.courses{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .wa{width:56px;height:56px;padding:0;justify-content:center}
+  .wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* PDF */
+@page{size:A4;margin:14mm}
+@media print{
+  body{font-size:10.5pt;line-height:1.45;color:#000;background:#fff}
+  header.top,.wa,.actions,.burger,.skip,footer .btn,.no-print{display:none!important}
+  .hero{padding:0 0 .8rem}
+  .hero .wrap{grid-template-columns:1fr 110px;gap:1rem}
+  .photo{width:110px;height:127px}
+  .hero h1{font-size:24pt}
+  .print-contact{display:block;margin:.6rem 0 0;font-weight:600}
+  section{padding:1rem 0;border-top:1px solid #999}
+  section.alt{background:#fff}
+  h2,h3,.date,.org{break-after:avoid}
+  h2{font-size:15pt;margin-bottom:.6rem}
+  .tl li,.courses div{break-inside:avoid}
+  .tl li{margin-bottom:.9rem}
+  .courses div{border-color:#999}
+  .tags li{border-color:#999}
+  a{color:#000;text-decoration:none}
+  #contacto .contact-list{display:none}
+  footer{padding:.5rem 0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio">Luis Morocho</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#educacion">Educación</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a class="cta" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+<section id="inicio" class="hero" style="border-top:0">
+  <div class="wrap">
+    <div>
+      <h1>Luis Ángel <strong>Morocho Salazar</strong></h1>
+      <p class="role">Estudiante de Ingeniería en Ciencias de la Computación</p>
+      <p class="lead">Desarrollo aplicaciones web (Node.js, Angular, PostgreSQL), enseño informática a estudiantes con diversidad funcional y analizo datos con Excel y Power BI.</p>
+      <div class="actions">
+        <a class="btn" href="#contacto">Contáctame</a>
+        <a class="btn sec" href="#experiencia">Ver experiencia</a>
+      </div>
+      <p class="place">Quitumbe, Quito, Ecuador</p>
+      <p class="print-contact">WhatsApp / teléfono: +593 98 453 9927 · luisangel.msalazar11@gmail.com · linkedin.com/in/luis-angel-morocho-salazar-500268353</p>
+    </div>
+    <img class="photo" src="data:image/jpeg;base64,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" alt="Retrato de Luis Morocho" width="200" height="231">
+  </div>
+</section>
+
+<section id="sobre-mi" class="alt">
+  <div class="wrap">
+    <h2>Sobre mí</h2>
+    <div class="about">
+      <p>Soy un joven profesional responsable y organizado, capaz de manejar tareas complejas de manera ágil. Mi empatía y paciencia me permiten trabajar eficazmente en equipo y resolver desafíos de forma colaborativa.</p>
+      <p>Como estudiante de Ingeniería en Ciencias de la Computación he adquirido conocimientos en Python, Java y C++, además de Microsoft Excel para la gestión y análisis de datos. Me impulsan el aprendizaje y la mejora continua, y busco formas innovadoras de optimizar procesos.</p>
+      <p><strong>Idiomas:</strong> español (nativo) · inglés B1 (intermedio). <strong>Extra:</strong> licencia de conducción tipo B.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <h2>Experiencia</h2>
+    <ol class="tl">
+      <li>
+        <p class="date">03-2025 – 07-2025</p>
+        <h3>Docente de Informática Inclusiva</h3>
+        <p class="org">Centro Educativo “Luis de la Torre” High School</p>
+        <ul>
+          <li>Clases de computación adaptadas a estudiantes con diversidad funcional (TDAH, TEA, superdotación, dificultades de aprendizaje).</li>
+          <li>Materiales didácticos accesibles e interactivos para 2.º a 8.º de básica: hardware, software, sistemas operativos, ofimática, programación, redes y seguridad digital.</li>
+          <li>Evaluación formativa y sumativa con actividades lúdicas y exámenes personalizados.</li>
+          <li>Fomento de la inclusión digital con metodologías activas y acompañamiento pedagógico empático.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="date">02-2025 – 03-2025</p>
+        <h3>Tutor Informático</h3>
+        <p class="org">Proyecto de Inclusión Digital – EPN</p>
+        <ul>
+          <li>Capacitación en TIC a docentes y personas de grupos de atención prioritaria.</li>
+          <li>Desarrollo de materiales educativos adaptados a cada grupo.</li>
+          <li>Soporte técnico y asesoramiento en plataformas digitales.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="date">12-2024 – 02-2025</p>
+        <h3>Pasante – Desarrollador Full Stack</h3>
+        <p class="org">Asesoría en Seguridad y Salud – SSOA</p>
+        <ul>
+          <li>Configuración y despliegue de entornos con Docker, Node.js, PostgreSQL y PGAdmin.</li>
+          <li>Backend con Node.js, Express y SQL, con validaciones personalizadas.</li>
+          <li>Frontend con Angular: formularios reactivos y directivas personalizadas.</li>
+          <li>Notificaciones en tiempo real, manejo de errores y mejoras de UI/UX.</li>
+          <li>Control de versiones y trabajo colaborativo con GitHub.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="date">06-2023 – 01-2024</p>
+        <h3>Bodeguero</h3>
+        <p class="org">Bodega “El Maná”</p>
+        <ul>
+          <li>Registro, organización y movimiento de mercadería.</li>
+          <li>Control de inventarios con conteos físicos y verificación de existencias.</li>
+          <li>Coordinación con ventas para asegurar disponibilidad y despachos oportunos.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="date">01-2019 – 11-2022</p>
+        <h3>Vendedor</h3>
+        <p class="org">Víveres “LS”</p>
+        <ul>
+          <li>Venta de productos de primera necesidad y rotación de inventario.</li>
+          <li>Gestión de pedidos, operación de caja y conciliación de ingresos diarios.</li>
+          <li>Registro y control de ventas e inventarios en Excel (nivel básico).</li>
+          <li>Atención al cliente y resolución de consultas.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="educacion" class="alt">
+  <div class="wrap">
+    <h2>Educación y certificaciones</h2>
+    <ol class="tl">
+      <li>
+        <p class="date">2021 – presente (2027)</p>
+        <h3>Ingeniería en Ciencias de la Computación</h3>
+        <p class="org">Escuela Politécnica Nacional</p>
+      </li>
+      <li>
+        <p class="date">2019</p>
+        <h3>Bachillerato en Ciencias</h3>
+        <p class="org">Unidad Educativa “Mejía D7”</p>
+      </li>
+    </ol>
+    <h3 class="sub">Cursos</h3>
+    <div class="courses">
+      <div><h3>Suficiencia en Inglés B1</h3><p>Centro de Educación Continua · 01-2024 – 04-2025</p></div>
+      <div><h3>Excel básico e intermedio</h3><p>Espinosa de los Monteros (Capacitación Continua) · 03-2025. Tablas dinámicas, BUSCARV, INDICE/COINCIDIR, introducción a macros y VBA.</p></div>
+      <div><h3>Power BI – Básico</h3><p>EmpowerData LATAM · 03-2025. Power Query, visualizaciones, DAX y Power BI Service.</p></div>
+      <div><h3>Fundamentos informáticos</h3><p>UTPL · 05-2020 – 06-2020</p></div>
+      <div><h3>Administración I</h3><p>UTPL · 05-2020 – 06-2020</p></div>
+      <div><h3>Psicología general</h3><p>UTPL · 11-2020 – 12-2020</p></div>
+      <div><h3>Psicología social</h3><p>UTPL · 11-2020 – 12-2020</p></div>
+      <div><h3>Métodos de estudio y lectura sináptica</h3><p>ILVEM · 06-2014 – 06-2015</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div>
+        <h3 class="g">Lenguajes de programación</h3>
+        <ul class="tags"><li>Python</li><li>Java</li><li>C / C++</li><li>SQL</li><li>JavaScript</li><li>TypeScript</li><li>HTML</li><li>CSS</li></ul>
+        <h3 class="g">Software y herramientas</h3>
+        <ul class="tags"><li>Node.js / Express</li><li>Angular</li><li>Docker</li><li>Git / GitHub</li><li>Linux (Ubuntu)</li><li>Microsoft SQL Server</li><li>Microsoft Excel</li><li>Google Workspace</li><li>VS Code</li><li>Eclipse</li></ul>
+      </div>
+      <div>
+        <h3 class="g">Habilidades personales</h3>
+        <ul class="tags"><li>Trabajo en equipo y liderazgo</li><li>Resolución de problemas</li><li>Adaptabilidad y compromiso</li><li>Planificación y gestión del tiempo</li><li>Aprendizaje rápido</li><li>Pensamiento analítico</li><li>Redacción técnica</li><li>Creatividad e innovación</li><li>Comunicación y escucha activa</li><li>Proactividad</li></ul>
+        <h3 class="g">Otras aptitudes</h3>
+        <ul class="tags"><li>Atención al cliente y ventas</li><li>Gestión de inventarios</li><li>Facturación y manejo de caja</li><li>Bases de datos</li><li>Administración de redes y sistemas</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS (pendiente): el CV no incluye proyectos. Para activar la sección, copiar este bloque,
+     añadir un enlace "Proyectos" al menú y completar los datos reales.
+<section id="proyectos" class="alt"><div class="wrap">
+  <h2>Proyectos</h2>
+  <article><h3>Nombre del proyecto</h3>
+    <p>Descripción · Mi participación · Tecnologías · Resultado · <a href="#">Enlace</a></p></article>
+</div></section>
+-->
+
+<section id="contacto" class="alt">
+  <div class="wrap">
+    <h2>Contacto</h2>
+    <p>Escríbeme por el medio que prefieras. WhatsApp es el más rápido.</p>
+    <ul class="contact-list">
+      <li>WhatsApp: <a href="https://wa.me/593984539927?text=Hola%20Luis%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte." target="_blank" rel="noopener">+593 98 453 9927</a></li>
+      <li>Teléfono: <a href="tel:+593984539927">0984539927</a></li>
+      <li>Correo: <a href="mailto:luisangel.msalazar11@gmail.com">luisangel.msalazar11@gmail.com</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/luis-angel-morocho-salazar-500268353" target="_blank" rel="noopener">Luis Ángel Morocho Salazar</a></li>
+      <li>Ubicación: Quitumbe, Quito, Ecuador</li>
+    </ul>
+    <div class="actions no-print">
+      <a class="btn" href="https://wa.me/593984539927?text=Hola%20Luis%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn sec" href="mailto:luisangel.msalazar11@gmail.com">Enviar correo</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Luis Ángel Morocho Salazar</span>
+    <button class="btn sec" id="pdf" type="button">Descargar portafolio en PDF</button>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/593984539927?text=Hola%20Luis%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.4.7.7-2.3-.3-.4A8 8 0 0 1 12 4Zm-3 3.5c-.3 0-.7.2-.9.6-.3.6-.5 1.4 0 2.4.8 1.8 2.4 3.2 4.2 3.9 1 .4 1.8.3 2.4-.1.4-.3.7-.8.5-1.2l-1.4-.7-.7.8c-1.2-.4-2.2-1.4-2.7-2.6l.7-.7-.6-1.5Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  var menu=document.getElementById('menu'), btn=document.getElementById('burger');
+  function setMenu(open){
+    menu.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open);
+    btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    btn.textContent=open?'✕':'☰';
+  }
+  btn.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&menu.classList.contains('open')){setMenu(false);btn.focus()}
+  });
+  document.getElementById('pdf').addEventListener('click',function(){window.print()});
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
